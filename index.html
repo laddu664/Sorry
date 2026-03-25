@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgive Me</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    text-align: center;
+    background: pink;
+    overflow: hidden;
+}
+
+/* Pages */
+.page {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.active {
+    display: flex;
+}
+
+/* Buttons */
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.yes {
+    background: #ff4d6d;
+    color: white;
+}
+
+.no {
+    background: #ff1a1a;
+    color: white;
+    position: relative;
+}
+
+/* Text */
+h1 {
+    font-size: 35px;
+    color: #fff;
+}
+
+p {
+    font-size: 18px;
+    max-width: 300px;
+    color: #fff;
+}
+
+/* GIF */
+img {
+    margin: 15px;
+    border-radius: 15px;
+}
+
+/* 💞 HEART ANIMATION (LIGHT PINK + SMOOTH) */
+.heart {
+    position: absolute;
+    top: -20px;
+    font-size: 20px;
+    animation: fall linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(50vh) translateX(30px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(110vh) translateX(-30px) rotate(360deg);
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- 💞 HEARTS SCRIPT -->
+<script>
+for (let i = 0; i < 35; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💞";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 18) + "px";
+
+    heart.style.animationDuration = (Math.random() * 4 + 5) + "s";
+    heart.style.animationDelay = Math.random() * 5 + "s";
+
+    document.body.appendChild(heart);
+}
+</script>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>Will you forgive me? 😔</h1>
+    <button class="yes" onclick="nextPage(2)">Yes 😊</button>
+    <button class="no" onmouseover="moveNo()">No 😒</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>Good Morning, My Sunshine ☀️</h1>
+
+    <img src="morning.gif" width="220">
+
+    <p>
+        You are the warmth in my every morning 🌸<br><br>
+        Your smile shines brighter than the sun ☀️<br><br>
+        Every sunrise feels special because of you ❤️<br><br>
+        I wish your day is filled with love, happiness and beautiful moments ✨
+    </p>
+
+    <button class="yes" onclick="nextPage(3)">Next ➡️</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>For You ❤️</h1>
+    <img src="yourgif.gif" width="250">
+
+    <!-- ❤️ FINAL LINE -->
+    <p style="font-size:22px; font-weight:bold;">
+        Love you infinite baby ❤️❤️
+    </p>
+</div>
+
+<script>
+function nextPage(pageNumber) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById("page" + pageNumber).classList.add("active");
+}
+
+function moveNo() {
+    let btn = document.querySelector(".no");
+    let x = Math.random() * 200 - 100;
+    let y = Math.random() * 200 - 100;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+}
+</script>
+
+</body>
+</html>
